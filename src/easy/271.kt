@@ -1,4 +1,4 @@
-package array_hashing
+package easy
 
 // Encodes a list of strings to a single string.
 fun encode(strs: List<String>): String {

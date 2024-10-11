@@ -1,4 +1,4 @@
-package array_hashing
+package easy
 
 /*884. Uncommon Words from Two Sentences*/
 

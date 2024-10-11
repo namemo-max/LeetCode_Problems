@@ -1,4 +1,4 @@
-package two_pointers
+package medium
 
 fun twoSum(numbers: IntArray, target: Int): IntArray {
     var left = 0
