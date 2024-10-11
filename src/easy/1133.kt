@@ -10,10 +10,16 @@ fun largestUniqueNumber(nums: IntArray): Int {
     }
 
     var res = 0
-    for ((key, value) in map) {
-        if (value < 2) {
-            res = max(res, key)
+    // for ((key, value) in map) {
+    //     if (value == 1) {
+    //         res = max(res, key)
+    //     }
+    // }
+    for (num in nums) {
+        val occurrence = map[num] ?: 0
+        if (occurrence == 1) {
+            res = max(res, num)
         }
     }
-    return if (res == 0) -1 else res
+    return if (res == 0) - 1 else res
 }

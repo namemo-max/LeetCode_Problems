@@ -1,4 +1,4 @@
-package easy
+package medium
 
 // Encodes a list of strings to a single string.
 fun encode(strs: List<String>): String {
