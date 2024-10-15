@@ -3,20 +3,19 @@ package medium
 import kotlin.math.ceil
 
 fun minEatingSpeed(piles: IntArray, h: Int): Int {
-    var spent = 0
-     for (i in 1..Long.MAX_VALUE) {
-         spent = 0
-         for (j in piles.indices) {
-             spent += ceil(piles[j].toDouble() / i).toInt()
-             if (spent > h) {
-                 break
-             }
-         }
-         if (spent <= h) {
-             return i.toInt()
-         }
-     }
-     return - 1
+    for (i in 1..Int.MAX_VALUE) {
+        var spent = 0
+        for (pile in piles) {
+            spent += ceil(pile.toDouble() / i).toInt()
+            if (spent > h) {
+                break
+            }
+        }
+        if (spent <= h) {
+            return i
+        }
+    }
+    return -1
 }
 
 //fun minEatingSpeed(piles: IntArray, h: Int): Int {
