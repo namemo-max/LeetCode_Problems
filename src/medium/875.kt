@@ -2,42 +2,33 @@ package medium
 
 import kotlin.math.ceil
 
+/*
+875. Koko Eating Bananas
+Problem link: https://leetcode.com/problems/koko-eating-bananas/description/
+ */
+
 fun minEatingSpeed(piles: IntArray, h: Int): Int {
-    for (i in 1..Int.MAX_VALUE) {
-        var spent = 0
-        for (pile in piles) {
-            spent += ceil(pile.toDouble() / i).toInt()
-            if (spent > h) {
-                break
-            }
-        }
-        if (spent <= h) {
-            return i
+    var min = 1
+    var max = piles.maxOrNull() ?: 0
+
+    while (min < max) {
+        val mid = min + (max - min) / 2
+        if (canEatAll(piles, mid, h)) {
+            max = mid
+        } else {
+            min = mid + 1
         }
     }
-    return -1
+    return min
 }
 
-//fun minEatingSpeed(piles: IntArray, h: Int): Int {
-//    var left = 1
-//    var right = piles.maxOrNull() ?: 0
-//
-//    while (left < right) {
-//        val mid = left + (right - left) / 2
-//        var hours = 0
-//
-//        for (pile in piles) {
-//            hours += ceil(pile.toDouble() / mid).toInt()
-//        }
-//
-//        when {
-//            hours <= h -> {
-//                right = mid
-//            }
-//            else -> {
-//                left = mid + 1
-//            }
-//        }
-//    }
-//    return right
-//}
+private fun canEatAll(piles: IntArray, m: Int, h: Int): Boolean {
+    var hours = 0.0
+    for (pile in piles) {
+        hours += ceil(pile.toDouble() / m)
+        if (hours > h) {
+            return false
+        }
+    }
+    return hours <= h
+}
